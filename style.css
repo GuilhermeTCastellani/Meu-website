@@ -1,0 +1,214 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  background: #f9f9f9;
+  color: #333;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+header {
+  text-align: center;
+  padding: 2rem;
+  background: #4a90e2;
+  color: white;
+}
+
+nav {
+  text-align: center;
+  background: #333;
+  padding: 0.5rem;
+}
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: #4a90e2;
+}
+
+/* Imagem */
+.foto {
+  display: block;
+  margin: 1rem auto;
+  max-width: 200px;
+  border-radius: 50%;
+  border: 3px solid #4a90e2;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #eee;
+  font-size: 0.9rem;
+}
+#btnTopo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  padding: 10px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#btnDark {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#btnDark {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+body:not(.dark) #btnDark {
+  background: #f1f1f1;
+  color: #333;
+}
+body.dark {
+  background: #222;
+  color: #f1f1f1;
+}
+
+body.dark header {
+  background: #111;
+}
+
+body.dark nav {
+  background: #111;
+}
+
+body.dark h2 {
+  color: #ddd;
+}
+body.dark footer {
+  background: #111;
+  color: #f1f1f1;
+}
+
+.timeline {
+  position: relative;
+  margin: 2rem 0;
+  padding-left: 30px; 
+  border-left: 3px solid #4a90e2;
+}
+
+.timeline-item {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -20px; 
+  top: 50%;
+  transform: translateY(-50%); 
+  width: 15px;
+  height: 15px;
+  background: #4a90e2;
+  border-radius: 50%;
+}
+
+.timeline-item .date {
+  font-weight: bold;
+  color: #4a90e2;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.lista-certificados {
+  list-style: none;
+  padding: 0;
+}
+
+.lista-certificados li {
+  margin-bottom: 15px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #4a90e2;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background: #357ab8;
+  transform: scale(1.05);
+}
+
+.contato-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #4a90e2;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background: #357ab8;
+  transform: scale(1.05);
+}
+
+#curriculo {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+#curriculo p {
+  margin-bottom: 1rem;
+}
