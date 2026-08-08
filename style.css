@@ -8,13 +8,13 @@
 :root {
   /* cor — tema claro é a base */
   --bg: #faf6f0;
-  --bg-alt: #f3ece2;
   --surface: #fffdfa;
   --text: #1f1a15;
   --muted: #6d6055;
   --accent: #b4482f;
   --accent-forte: #963a24;
   --accent-suave: #f4e2da;
+  --sobre-accent: #fff; /* texto/ícone por cima de uma área cheia de accent */
   --linha: #e4d9cb;
 
   /* tipografia */
@@ -30,21 +30,25 @@
   --raio: 14px;
   --raio-p: 8px;
   --sombra: 0 1px 2px rgb(31 26 21 / 4%), 0 12px 32px -18px rgb(31 26 21 / 28%);
+  --linha-ativa: color-mix(in srgb, var(--accent) 45%, var(--linha));
 
-  --transicao: 220ms cubic-bezier(0.33, 1, 0.68, 1);
+  --curva: cubic-bezier(0.33, 1, 0.68, 1);
+  --transicao: 220ms var(--curva);
 }
 
-/* escuro por preferência do sistema, a menos que o usuário tenha escolhido claro */
+/* escuro por preferência do sistema, a menos que o usuário tenha escolhido claro.
+   Os dois blocos abaixo são gêmeos de propósito: um cobre o sistema, o outro a
+   escolha manual. Ao mexer em uma cor, mexa nos dois. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #15120f;
-    --bg-alt: #1b1713;
     --surface: #1e1a15;
     --text: #f3ece3;
     --muted: #a9998a;
     --accent: #e8886a;
     --accent-forte: #f0a087;
     --accent-suave: #2d211b;
+    --sobre-accent: #1a120e;
     --linha: #302820;
     --sombra: 0 1px 2px rgb(0 0 0 / 30%), 0 12px 32px -18px rgb(0 0 0 / 70%);
   }
@@ -53,13 +57,13 @@
 /* escolha explícita do usuário vence dos dois lados */
 :root[data-theme="dark"] {
   --bg: #15120f;
-  --bg-alt: #1b1713;
   --surface: #1e1a15;
   --text: #f3ece3;
   --muted: #a9998a;
   --accent: #e8886a;
   --accent-forte: #f0a087;
   --accent-suave: #2d211b;
+  --sobre-accent: #1a120e;
   --linha: #302820;
   --sombra: 0 1px 2px rgb(0 0 0 / 30%), 0 12px 32px -18px rgb(0 0 0 / 70%);
 }
@@ -138,7 +142,7 @@ ol {
   z-index: 100;
   padding: 0.75rem 1.25rem;
   background: var(--accent);
-  color: #fff;
+  color: var(--sobre-accent);
   border-radius: 0 0 var(--raio-p) 0;
   font-weight: 600;
 }
@@ -158,6 +162,7 @@ ol {
   gap: 1rem;
   padding: 0.85rem var(--gutter);
   background: color-mix(in srgb, var(--bg) 86%, transparent);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
   transition: border-color var(--transicao), background var(--transicao);
@@ -183,7 +188,7 @@ ol {
   margin-left: auto;
   overflow-x: auto;
   scrollbar-width: none;
-  -ms-overflow-style: none;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12px, #000 calc(100% - 12px), transparent);
   mask-image: linear-gradient(to right, transparent, #000 12px, #000 calc(100% - 12px), transparent);
 }
 
@@ -281,7 +286,6 @@ ol {
 
 .hero h1 {
   font-size: clamp(3rem, 11vw, 6.5rem);
-  font-weight: 600;
   letter-spacing: -0.035em;
   font-variation-settings: "opsz" 144;
 }
@@ -348,7 +352,6 @@ ol {
   position: sticky;
   top: 5.5rem;
   align-self: start;
-  height: fit-content;
 }
 
 .secao__num {
@@ -375,7 +378,9 @@ ol {
   font-weight: 400;
 }
 
-.secao__corpo p:not(.texto-grande):not(.projeto__stack):not(.nota) {
+/* só os parágrafos soltos da seção — o ">" impede que isso vaze
+   para dentro dos cards de stack e de projeto, que têm cor própria */
+.secao__corpo > p:not(.texto-grande):not(.nota) {
   color: var(--muted);
   max-width: 58ch;
 }
@@ -425,7 +430,6 @@ ol {
 
 .stack__grupo p {
   font-size: 1rem;
-  color: var(--text);
 }
 
 /* ---------- Projetos ---------- */
@@ -445,7 +449,7 @@ ol {
 
 .projeto:hover {
   transform: translateY(-3px);
-  border-color: color-mix(in srgb, var(--accent) 45%, var(--linha));
+  border-color: var(--linha-ativa);
   box-shadow: var(--sombra);
 }
 
@@ -491,10 +495,6 @@ ol {
   margin-top: 1.15rem;
 }
 
-.projeto__links .link-seta {
-  margin-top: 0;
-}
-
 .link-seta {
   display: inline-flex;
   align-items: center;
@@ -504,6 +504,11 @@ ol {
   font-weight: 600;
   color: var(--accent);
   text-decoration: none;
+}
+
+/* dentro do grupo de links quem afasta do texto é o próprio .projeto__links */
+.projeto__links .link-seta {
+  margin-top: 0;
 }
 
 .link-seta::after {
@@ -577,7 +582,7 @@ ol {
 }
 
 .certificados a:hover {
-  border-color: color-mix(in srgb, var(--accent) 45%, var(--linha));
+  border-color: var(--linha-ativa);
   background: var(--accent-suave);
 }
 
@@ -625,23 +630,11 @@ ol {
 
 .btn--primario {
   background: var(--accent);
-  color: #fff;
+  color: var(--sobre-accent);
 }
 
 .btn--primario:hover {
   background: var(--accent-forte);
-}
-
-:root[data-theme="dark"] .btn--primario,
-:root[data-theme="dark"] .btn--primario:hover {
-  color: #1a120e;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .btn--primario,
-  :root:not([data-theme="light"]) .btn--primario:hover {
-    color: #1a120e;
-  }
 }
 
 .btn--fantasma {
@@ -731,7 +724,7 @@ ol {
 .reveal {
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 640ms cubic-bezier(0.33, 1, 0.68, 1), transform 640ms cubic-bezier(0.33, 1, 0.68, 1);
+  transition: opacity 640ms var(--curva), transform 640ms var(--curva);
 }
 
 .reveal.is-visible {

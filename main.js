@@ -6,23 +6,26 @@
   "use strict";
 
   const raiz = document.documentElement;
+  const temObservador = "IntersectionObserver" in window;
 
   /* ---------- Tema ---------- */
 
   const CHAVE_TEMA = "tema";
   const btnTema = document.getElementById("btnTema");
+  const consultaEscuro = window.matchMedia("(prefers-color-scheme: dark)");
 
-  const temaDoSistema = () =>
-    window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  function temaDoSistema() {
+    return consultaEscuro.matches ? "dark" : "light";
+  }
 
-  const aplicarTema = (tema) => {
+  function aplicarTema(tema) {
     raiz.dataset.theme = tema;
     btnTema.setAttribute("aria-pressed", String(tema === "dark"));
     btnTema.setAttribute(
       "aria-label",
       tema === "dark" ? "Mudar para tema claro" : "Mudar para tema escuro"
     );
-  };
+  }
 
   const salvo = localStorage.getItem(CHAVE_TEMA);
   aplicarTema(salvo === "dark" || salvo === "light" ? salvo : temaDoSistema());
@@ -34,24 +37,22 @@
   });
 
   // enquanto o usuário não escolher manualmente, acompanha o sistema
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", (e) => {
-      if (!localStorage.getItem(CHAVE_TEMA)) {
-        aplicarTema(e.matches ? "dark" : "light");
-      }
-    });
+  consultaEscuro.addEventListener("change", () => {
+    if (!localStorage.getItem(CHAVE_TEMA)) {
+      aplicarTema(temaDoSistema());
+    }
+  });
 
   /* ---------- Barra superior e botão de topo ---------- */
 
   const topbar = document.querySelector(".topbar");
   const btnTopo = document.getElementById("btnTopo");
 
-  const aoRolar = () => {
+  function aoRolar() {
     const y = window.scrollY;
     topbar.classList.toggle("is-scrolled", y > 8);
     btnTopo.hidden = y < 400;
-  };
+  }
 
   window.addEventListener("scroll", aoRolar, { passive: true });
   aoRolar();
@@ -64,35 +65,34 @@
 
   const reveals = document.querySelectorAll(".reveal");
 
-  if (!("IntersectionObserver" in window)) {
-    reveals.forEach((el) => el.classList.add("is-visible"));
-  } else {
+  if (temObservador) {
     const observador = new IntersectionObserver(
       (entradas) => {
         entradas.forEach((entrada) => {
-          if (entrada.isIntersecting) {
-            entrada.target.classList.add("is-visible");
-            observador.unobserve(entrada.target);
-          }
+          if (!entrada.isIntersecting) return;
+          entrada.target.classList.add("is-visible");
+          observador.unobserve(entrada.target);
         });
       },
       { rootMargin: "0px 0px -12% 0px", threshold: 0.05 }
     );
 
     reveals.forEach((el) => observador.observe(el));
+  } else {
+    // sem observador, mostra tudo de uma vez em vez de esconder o conteúdo
+    reveals.forEach((el) => el.classList.add("is-visible"));
   }
 
   /* ---------- Link ativo na navegação ---------- */
 
-  const secoes = document.querySelectorAll("main section[id]");
-  const links = new Map(
-    [...document.querySelectorAll('.topbar__nav a[href^="#"]')].map((a) => [
-      a.getAttribute("href").slice(1),
-      a,
-    ])
-  );
+  if (temObservador) {
+    const links = new Map(
+      [...document.querySelectorAll('.topbar__nav a[href^="#"]')].map((a) => [
+        a.getAttribute("href").slice(1),
+        a,
+      ])
+    );
 
-  if ("IntersectionObserver" in window && secoes.length) {
     const espiao = new IntersectionObserver(
       (entradas) => {
         entradas.forEach((entrada) => {
@@ -103,11 +103,14 @@
       { rootMargin: "-45% 0px -50% 0px" }
     );
 
-    secoes.forEach((secao) => espiao.observe(secao));
+    document
+      .querySelectorAll("main section[id]")
+      .forEach((secao) => espiao.observe(secao));
   }
 
   /* ---------- Ano do rodapé ---------- */
 
-  const ano = document.getElementById("ano");
-  if (ano) ano.textContent = String(new Date().getFullYear());
+  document.getElementById("ano").textContent = String(
+    new Date().getFullYear()
+  );
 })();
