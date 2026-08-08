@@ -4,106 +4,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Site Pessoal</title>
+    <title>Guilherme Tadeu Castellani — Ciência da Computação</title>
+    <meta name="description"
+        content="Site pessoal de Guilherme Tadeu Castellani, cientista da computação. Microserviços em Java, engenharia de dados, front-end e mobile.">
+    <meta name="author" content="Guilherme Tadeu Castellani">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Guilherme Tadeu Castellani — Ciência da Computação">
+    <meta property="og:description"
+        content="Cientista da computação. Microserviços em Java, engenharia de dados, front-end e mobile.">
+    <meta property="og:image" content="foto.jpg">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="theme-color" content="#faf6f0" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#15120f" media="(prefers-color-scheme: dark)">
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Karla:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
-        <h1>Olá, meu nome é Guilherme Tadeu Castellani</h1>
-        <p>Bem-vindo ao meu site pessoal!</p>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="topbar">
+        <a class="topbar__mark" href="#topo" aria-label="Início">GC</a>
+
+        <nav class="topbar__nav" aria-label="Seções do site">
+            <a href="#sobre">Sobre</a>
+            <a href="#stack">Stack</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#formacao">Formação</a>
+            <a href="#certificados">Certificados</a>
+            <a href="#contato">Contato</a>
+        </nav>
+
+        <button id="btnTema" class="tema" type="button" aria-label="Alternar tema escuro" aria-pressed="false">
+            <span class="tema__icone" aria-hidden="true"></span>
+        </button>
     </header>
 
-    <nav>
-        <a href="#sobre">Sobre</a>
-        <a href="#experiencias">Projetos</a>
-        <a href="#contato">Contato</a>
-    </nav>
+    <main id="conteudo">
 
-    <main>
-        <section id="sobre">
-            <h2>Sobre mim</h2>
-            <p>Sou estudante de Ciência da Computação na ATITUS Educação, tenho 20 anos e busco uma oportunidade na área
-                de Tecnologia da Informação para aplicar meus conhecimentos, adquirir experiência prática e contribuir
-                com soluções inovadoras.</p>
-            <img src="foto.jpg" alt="Minha foto" class="foto">
+        <section class="hero" id="topo">
+            <div class="hero__texto">
+                <p class="eyebrow reveal">Cientista da Computação</p>
+                <h1 class="reveal">Guilherme<br>Tadeu<br><em>Castellani</em></h1>
+                <p class="hero__linha reveal">Construo software do back-end à tela — microserviços em Java, pipelines de
+                    dados e interfaces que as pessoas realmente usam.</p>
+                <div class="hero__acoes reveal">
+                    <a class="btn btn--primario"
+                        href="https://drive.google.com/file/d/15UakzKMt_Eqzx01TyN5cUjC3PNx9-_0l/view?usp=drive_link"
+                        target="_blank" rel="noopener">Ver currículo</a>
+                    <a class="btn btn--fantasma" href="#contato">Falar comigo</a>
+                </div>
+            </div>
+
+            <figure class="hero__foto reveal">
+                <img src="foto.jpg" alt="Retrato de Guilherme Tadeu Castellani" width="640" height="800"
+                    loading="eager">
+            </figure>
         </section>
 
-        <section id="experiencias">
-            <h2>Experências</h2>
-            <ul>
-                <li>Hardware Architecture | Programação e automação em Arduino e Raspberry Pi.</li>
-                <li>Linguagens de Programação | Java, Python e C++.</li>
-                <li>linguagens de Marcação | JavaScript, CSS e HTML.</li>
-            </ul>
-        </section>
-
-        <section id="contato">
-            <h2>Contato</h2>
-            <p>Você pode me encontrar em:</p>
-            <div class="contato-botoes">
-                <a href="https://wa.me/5554996013511" target="_blank" class="btn">WhatsApp</a>
-                <a href="https://www.linkedin.com/in/guilherme-tadeu-castellani" target="_blank"
-                    class="btn">LinkedIn</a>
-                <a href="https://github.com/GuilhermeTCastellani" target="_blank" class="btn">GitHub</a>
+        <section id="sobre" class="secao">
+            <div class="secao__cabeca reveal">
+                <span class="secao__num">01</span>
+                <h2>Sobre</h2>
+            </div>
+            <div class="secao__corpo">
+                <p class="texto-grande reveal">Tenho 20 anos e curso Ciência da Computação. Gosto da parte em que a
+                    teoria vira algo rodando — seja um serviço em Java, um pipeline de dados ou uma placa respondendo a
+                    um sensor.</p>
+                <p class="reveal">Meu interesse está em como sistemas crescem sem quebrar: arquitetura distribuída,
+                    microserviços com banco por serviço, containers e o caminho que o dado percorre até virar decisão.</p>
             </div>
         </section>
 
-        <section id="certificados">
-            <h2>Certificados</h2>
-            <ul class="lista-certificados">
-                <li>
-                    <a href="https://drive.google.com/drive/folders/1LGPbpj9O6Pp4cNJ_zGBIeM3Oirns-Buu?usp=drive_link"
-                        target="_blank" class="btn">
-                        Cursos de Inglês | CIPEX idiomas (2020-2022)
-                    </a>
-                </li>
-                <li>
-                    <a href="https://drive.google.com/file/d/1i0OkbMunb3qNPZjb9JsiFLM8jUmMCOcF/view?usp=drive_link"
-                        target="_blank" class="btn">
-                        Cloud Semester 1 | Amazon Web Services (2024)
-                    </a>
-                </li>
-            </ul>
+        <section id="stack" class="secao">
+            <div class="secao__cabeca reveal">
+                <span class="secao__num">02</span>
+                <h2>Stack</h2>
+            </div>
+            <div class="secao__corpo">
+                <ul class="stack">
+                    <li class="stack__grupo reveal">
+                        <h3>Linguagens</h3>
+                        <p>Java · Python · JavaScript</p>
+                    </li>
+                    <li class="stack__grupo reveal">
+                        <h3>Back-end</h3>
+                        <p>Microserviços · Docker</p>
+                    </li>
+                    <li class="stack__grupo reveal">
+                        <h3>Web &amp; mobile</h3>
+                        <p>HTML · CSS · JavaScript · React Native</p>
+                    </li>
+                    <li class="stack__grupo reveal">
+                        <h3>Dados &amp; nuvem</h3>
+                        <p>Engenharia de dados · AWS (fundamentos)</p>
+                    </li>
+                    <li class="stack__grupo reveal">
+                        <h3>Hardware &amp; automação</h3>
+                        <p>Arduino · Raspberry Pi</p>
+                    </li>
+                </ul>
+            </div>
         </section>
 
+        <section id="projetos" class="secao">
+            <div class="secao__cabeca reveal">
+                <span class="secao__num">03</span>
+                <h2>Projetos</h2>
+            </div>
+            <div class="secao__corpo">
+                <ul class="projetos">
+                    <li class="projeto reveal">
+                        <div class="projeto__topo">
+                            <h3>AutoParts</h3>
+                            <span class="tag">Sistema completo</span>
+                        </div>
+                        <p>Aplicação de ponta a ponta, dividida em dois repositórios. O back-end é uma arquitetura de
+                            microserviços em Java pensada para escalar — cada serviço com responsabilidade e banco de
+                            dados próprios (<em>database-per-service</em>). O front-end é uma interface web em
+                            JavaScript que consome as APIs desses serviços.</p>
+                        <p class="projeto__stack">Java · Microserviços · Docker · Database-per-service · JavaScript</p>
+                        <div class="projeto__links">
+                            <a class="link-seta" href="https://github.com/GuilhermeTCastellani/microservices-java"
+                                target="_blank" rel="noopener">Back-end</a>
+                            <a class="link-seta" href="https://github.com/ArthurBava/TB_AutoParts" target="_blank"
+                                rel="noopener">Front-end</a>
+                        </div>
+                    </li>
 
-        <section id="educacao">
-            <h2>Educação</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <span class="date">2024 – atual</span>
-                    <div class="content">
+                    <!--
+                      TEMPLATE — copie este bloco pra adicionar um projeto novo.
+                      Troque título, tag, descrição, stack e link.
+
+                    <li class="projeto reveal">
+                        <div class="projeto__topo">
+                            <h3>Nome do projeto</h3>
+                            <span class="tag">Categoria</span>
+                        </div>
+                        <p>O que ele faz e qual problema resolve, em uma ou duas frases.</p>
+                        <p class="projeto__stack">Tecnologia · Tecnologia · Tecnologia</p>
+                        <a class="link-seta" href="https://github.com/SEU_USUARIO/SEU_REPO" target="_blank" rel="noopener">Ver repositório</a>
+                    </li>
+                    -->
+                </ul>
+                <p class="nota reveal">Mais código no <a
+                        href="https://github.com/GuilhermeTCastellani" target="_blank" rel="noopener">GitHub</a>.</p>
+            </div>
+        </section>
+
+        <section id="formacao" class="secao">
+            <div class="secao__cabeca reveal">
+                <span class="secao__num">04</span>
+                <h2>Formação</h2>
+            </div>
+            <div class="secao__corpo">
+                <ol class="timeline">
+                    <li class="timeline__item reveal">
+                        <span class="timeline__data">2024 — atual</span>
                         <h3>Ciência da Computação</h3>
                         <p>ATITUS Educação</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <span class="date">2020 – 2023</span>
-                    <div class="content">
-                        <h3>Ensino Médio Completo</h3>
+                    </li>
+                    <li class="timeline__item reveal">
+                        <span class="timeline__data">2020 — 2023</span>
+                        <h3>Ensino Médio</h3>
                         <p>IEE Assis Brasil</p>
-                    </div>
-                </div>
+                    </li>
+                </ol>
             </div>
         </section>
 
-        <section id="curriculo">
-            <h2>Currículo</h2>
-            <p>Você pode visualizar meu currículo em PDF para mais detalhes sobre minha formação e experiências.</p>
-            <a href="https://drive.google.com/file/d/1_QLcFRxFP92iOdJSMx7zEaXZsBAAPIcV/view?usp=drive_link" class="btn" target="_blank">Ver Currículo</a>
+        <section id="certificados" class="secao">
+            <div class="secao__cabeca reveal">
+                <span class="secao__num">05</span>
+                <h2>Certificados</h2>
+            </div>
+            <div class="secao__corpo">
+                <ul class="certificados">
+                    <li class="reveal">
+                        <a href="https://drive.google.com/file/d/1i0OkbMunb3qNPZjb9JsiFLM8jUmMCOcF/view?usp=drive_link"
+                            target="_blank" rel="noopener">
+                            <span class="certificado__ano">2024</span>
+                            <span class="certificado__nome">Cloud Semester 1</span>
+                            <span class="certificado__org">Amazon Web Services</span>
+                        </a>
+                    </li>
+                    <li class="reveal">
+                        <a href="https://drive.google.com/drive/folders/1LGPbpj9O6Pp4cNJ_zGBIeM3Oirns-Buu?usp=drive_link"
+                            target="_blank" rel="noopener">
+                            <span class="certificado__ano">2020 — 2022</span>
+                            <span class="certificado__nome">Curso de Inglês</span>
+                            <span class="certificado__org">CIPEX Idiomas</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </section>
 
+        <section id="contato" class="secao secao--contato">
+            <div class="secao__cabeca reveal">
+                <span class="secao__num">06</span>
+                <h2>Contato</h2>
+            </div>
+            <div class="secao__corpo">
+                <p class="texto-grande reveal">Pra falar sobre um projeto, tirar uma dúvida ou só trocar ideia sobre
+                    tecnologia.</p>
+                <div class="contato__links">
+                    <a class="btn btn--icone btn--fantasma reveal" href="https://wa.me/5554996013511" target="_blank"
+                        rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+                        <svg class="icone" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                            focusable="false">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.892c0 2.096.549 4.142 1.595 5.945L0 24l6.335-1.652a12.062 12.062 0 0 0 5.71 1.447h.006c6.585 0 11.946-5.335 11.949-11.893a11.821 11.821 0 0 0-3.48-8.413" />
+                        </svg>
+                    </a>
 
+                    <a class="btn btn--icone btn--fantasma reveal"
+                        href="https://www.linkedin.com/in/guilherme-tadeu-castellani" target="_blank" rel="noopener"
+                        aria-label="LinkedIn" title="LinkedIn">
+                        <svg class="icone" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                            focusable="false">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z" />
+                        </svg>
+                    </a>
 
+                    <a class="btn btn--icone btn--fantasma reveal" href="https://github.com/GuilhermeTCastellani"
+                        target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+                        <svg class="icone" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                            focusable="false">
+                            <path
+                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
 
     </main>
 
-    <footer>
-        <p>© 2025 Guilherme Tadeu Castellani - Todos os direitos reservados.</p>
+    <footer class="rodape">
+        <p>© <span id="ano">2026</span> Guilherme Tadeu Castellani</p>
+        <p class="rodape__nota">Feito à mão com HTML, CSS e JavaScript.</p>
     </footer>
-    <button id="btnTopo">Voltar ao topo</button>
-    <button id="btnDark">🌙</button>
+
+    <button id="btnTopo" class="topo" type="button" aria-label="Voltar ao topo" hidden>
+        <span aria-hidden="true">↑</span>
+    </button>
 
     <script src="main.js"></script>
 </body>
